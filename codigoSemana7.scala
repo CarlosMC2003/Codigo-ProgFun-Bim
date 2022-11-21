@@ -78,3 +78,10 @@ Seq("wobal", "xanthan", "yogurt", "zebra").
   groupBy(s => if (s startsWith "y") 1 else 2)
 
 List(1, 2, 3, 4, 5).groupBy(x => x % 3)
+
+//Numeros de jugadores con los mismos goles
+goleadores.groupBy{ case (_, goals) => goals}
+
+goleadores.groupBy{ case (_, goals) => goals}.map(row => row match {
+  case (goles, lista) => (goles, lista.size)
+}).toList.sortBy(_._2)
